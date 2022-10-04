@@ -1,27 +1,24 @@
-import React,{useState} from 'react'
+import React from 'react'
 import "./App.css"
+import Counter from './useState/Counter'
+import StateCounter from './useState/StateCounter'
+import {Routes, Route} from 'react-router-dom'
+import Navbar from './Navbar'
+import MoreState from './useState/MoreState'
 const App = () => {
-   const [count, setCount] = useState(0);
-
-   const incrementCount = () => {
-       setCount(count + 1);
-   }
-   const decrementCount = () => {
-      setCount(count - 1);
-   }
-
-   let colors = "#000";
+ 
 
 
-   if(count < 1){
-       colors ="#f00"
-   }
+  
   return (
     <div>
-         <p style = {{color: colors}}>You clicked {count} times</p>
-         {/* <button onClick={() => setCount(count + 1)}>Click Me</button> */}
-         <button onClick={incrementCount}>Increment</button>
-         <button onClick={decrementCount}>Decrement</button>
+      <Navbar />
+      <MoreState />
+       <Routes>
+           <Route path={'/counter'} element={<Counter />}/>
+           <Route path={'/state'} element={<StateCounter />}/>
+       </Routes>
+        
     </div>
   )
 }
