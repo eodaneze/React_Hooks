@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from 'react'
+import "./App.css"
+const App = () => {
+   const [count, setCount] = useState(0);
 
-function App() {
+   const incrementCount = () => {
+       setCount(count + 1);
+   }
+   const decrementCount = () => {
+      setCount(count - 1);
+   }
+
+   let colors = "#000";
+
+
+   if(count < 1){
+       colors ="#f00"
+   }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+         <p style = {{color: colors}}>You clicked {count} times</p>
+         {/* <button onClick={() => setCount(count + 1)}>Click Me</button> */}
+         <button onClick={incrementCount}>Increment</button>
+         <button onClick={decrementCount}>Decrement</button>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
